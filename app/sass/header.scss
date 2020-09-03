@@ -11,6 +11,7 @@
     background-color: $black;
     top: 0;
     left: 0;
+    overflow: hidden;
 
     &__logo {
         display: flex;

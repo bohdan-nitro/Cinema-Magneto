@@ -1,9 +1,8 @@
 @import "variables";
 .intro {
-    width: 100%;
     display: flex;
-    overflow-x: hidden;
-    overflow-y: auto;
+    border-bottom: 8px solid #222222;
+    overflow: hidden;
 
     &__content {
         margin-top: 200px;
