@@ -134,3 +134,48 @@
         }
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .reviews {
+        .container {
+            max-width: 700px;
+            flex-flow: wrap;
+            flex-direction: column;
+        }
+        .reviews__title-box {
+            max-height: 175px;
+            .reviews-title {
+                &::after {
+                    left: 39%;
+                }
+            }
+        }
+        .content__wrapper {
+            margin-top: 70px;
+        }
+    }
+}
+@media screen and (max-width: 420px) {
+    .reviews {
+        .container {
+            max-width: 380px;
+            flex-flow: wrap;
+        }
+        .reviews__title-box {
+            max-height: 75px;
+            .reviews-title {
+                &::after {
+                    left: 30%;
+                }
+            }
+        }
+        .content__wrapper {
+            margin-top: 0;
+        }
+        .footer {
+            .footer__socials {
+                max-width: 170px;
+            }
+        }
+    }
+}
