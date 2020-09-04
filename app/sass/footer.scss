@@ -1,0 +1,51 @@
+@import "variables";
+.footer {
+    align-items: center;
+    display: flex;
+    width: 100%;
+    background-color: $black;
+    height: 65px;
+    flex-flow: row nowrap;
+
+    &__label {
+        align-items: center;
+        width: 100%;
+        max-width: 200px;
+        display: flex;
+    }
+    &__author {
+        font-size: 1.1rem;
+        color: $white;
+        font-weight: 700;
+    }
+    &__socials {
+        padding: 0 15px;
+        width: 100%;
+        max-width: 900px;
+        display: flex;
+        margin: 0 auto;
+        justify-content: flex-end;
+
+        .social__item {
+            width: 100%;
+            max-width: 30px;
+            margin-right: 15px;
+            transition: all 0.3s linear;
+            &:last-child {
+                margin-right: 0;
+            }
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+            &:hover {
+                transform: scale(1.2);
+            }
+        }
+    }
+}
+footer {
+    height: 75px;
+    top: 50px;
+    overflow: hidden;
+}

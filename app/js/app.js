@@ -2,6 +2,17 @@
 $(document).ready(function () {
 
 
+    $('a.scrollto').click(function () {
+        let elementClick = $(this).attr("href");
+        let destination = $(elementClick).offset().top;
+        $('html:not(:animated), body:not(:animated)').animate({
+            scrollTop: destination
+        }, 800);
+        return false;
+    });
+
+
+
     let films = new Swiper('.films .swiper-container', {
         speed: 400,
         direction: 'horizontal',
@@ -31,7 +42,7 @@ $(document).ready(function () {
         },
         breakpoints: {
             1000: {
-                slidesPerView: 3,
+                slidesPerView: 4,
             },
             640: {
                 slidesPerView: 1,

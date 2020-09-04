@@ -1,0 +1,136 @@
+@import "variables";
+
+.reviews {
+    width: 100%;
+    display: flex;
+    .reviews__title-box {
+        position: relative;
+        margin-top: 70px;
+        width: 100%;
+        display: flex;
+        height: 100%;
+        max-height: 100px;
+        text-align: center;
+        .reviews-title {
+            font-size: 2.4rem;
+            font-family: $font-family-title;
+            color: $white;
+            margin: 0 auto;
+            text-transform: uppercase;
+            &::after {
+                content: '';
+                position: absolute;
+                left: 44%;
+                top: 60px;
+                width: 150px;
+                height: 3px;
+                background-color: $yellow;
+            }
+        }
+    }
+    .films__content {
+        width: 100%;
+        padding: 0 90px;
+        overflow: hidden;
+    }
+    .content__wrapper {
+        position: relative;
+        width: 100%;
+        padding: 0 90px;
+        .swiper-container {
+            height: 100%;
+            overflow: hidden;
+            .swiper-slide {
+                position: relative;
+                max-height: 400px;
+                width: 150px;
+                user-select: none;
+
+                .reviews-name {
+                    color: $blue;
+                }
+                .reviews-description {
+                    margin-top: 20px;
+                    color: $white;
+                    width: 200px;
+                }
+                .reviews-image {
+                    width: 100%;
+                    height: 200px;
+                    margin-bottom: 40px;
+
+                    img {
+                        width: 100%;
+                        object-fit: cover;
+                        height: 100%;
+                    }
+
+                }
+            }
+        }
+        .nav__btn {
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            padding: 10px 5px;
+            font-family: $font-family-title;
+            font-weight: bold;
+            font-size: 0.6rem;
+            line-height: 13px;
+            text-transform: uppercase;
+            color: $white;
+            outline: none;
+            opacity: 1;
+            z-index: 5;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            user-select: none;
+            span {
+                position: relative;
+                z-index: 5;
+            }
+
+            &::before {
+                position: absolute;
+                content: '';
+                width: 55px;
+                height: 55px;
+                top: -30%;
+                left: -5px;
+                border-radius: 50%;
+                opacity: 0;
+                transition: all 0.3s linear;
+                z-index: 1;
+
+            }
+
+            &:hover {
+                span {
+                    transition: all 0.3s linear;
+                    color: $black;
+                }
+
+                &::before {
+                    opacity: 1;
+                    background-color: $yellow;
+                    color: $white;
+
+                }
+            }
+
+
+            &.swiper-button-disabled {
+                opacity: 0.5;
+            }
+
+            &.swiper-button-prev {
+                left: 5px;
+            }
+
+            &.swiper-button-next {
+                right: 15px;
+            }
+        }
+    }
+}

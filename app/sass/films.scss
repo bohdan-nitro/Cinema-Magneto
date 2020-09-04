@@ -98,7 +98,7 @@
                 content: '';
                 width: 55px;
                 height: 55px;
-                top: -40%;
+                top: -30%;
                 left: -5px;
                 border-radius: 50%;
                 opacity: 0;
@@ -131,13 +131,13 @@
             }
 
             &.swiper-button-next {
-                right: -5px;
+                right: 15px;
             }
         }
         .swiper-slide {
             position: relative;
             height: 100%;
-            width: 263px;
+            width: 250px;
 
 
         }
