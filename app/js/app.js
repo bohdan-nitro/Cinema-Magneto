@@ -9,12 +9,20 @@ class Cinema {
     /**
      * Show response burger menu
      */
-    showBurgerMenu = () => { $(this.headerNavigationSelector).addClass('active').slideUp(300) };
+    showBurgerMenu = () => {
+        $(this.headerNavigationSelector).slideDown(300, function () {
+            $(this).addClass('active')
+        })
+    };
 
     /**
      * Hide response burger menu
      */
-    hideBurgerMenu = () => { $(this.headerNavigationSelector).removeClass('active').slideDown(300) };
+    hideBurgerMenu = () => {
+        $(this.headerNavigationSelector).slideUp(300, function () {
+            $(this).removeClass('active')
+        })
+    };
 
     /**
      * Initialization films slider
@@ -39,7 +47,7 @@ class Cinema {
                 let posterPath = 'https://image.tmdb.org/t/p/original' + film.poster_path;
                 filmsWrapper.append('<div class="swiper-slide">' +
                     '<img src="' + posterPath + '" alt="" class="swiper-item"/> ' +
-                    '<spn class="title">' + film.title + '</spn>' +
+                    '<span class="swiper-title">' + film.title + '</span>' +
                     '</div>');
             });
         }
@@ -48,21 +56,20 @@ class Cinema {
             speed: 400,
             direction: 'horizontal',
             spaceBetween: 20,
-            slidesPerView: 3,
+            slidesPerView: 4,
             navigation: {
                 nextEl: '.films .swiper-button-next',
                 prevEl: '.films .swiper-button-prev',
             },
             breakpoints: {
                 1024: {
-                    slidesPerView: 3,
+                    slidesPerView: 2,
                 },
                 640: {
-                    slidesPerView: 1,
+                    slidesPerView: 2,
                 },
                 420: {
                     slidesPerView: 1,
-                    spaceBetweenSlides: 30,
                 },
             }
         });
@@ -117,14 +124,50 @@ class Cinema {
 
     };
 
+    /**
+     * Open contact popup
+     */
+    openContactPopup = () => {
+
+        $.magnificPopup.open({
+            items: {
+                src: '#contactPopup',
+            },
+            type: 'inline',
+            midClick: true,
+            removalDelay: 100,
+            mainClass: 'my-mfp-zoom-in',
+            callbacks: {
+                open: function () {
+                    $('body').addClass('fixed');
+
+                },
+                close: function () {
+                    $('body').removeClass('fixed');
+                }
+            }
+        });
+
+        $( 'div.wpcf7 > form' ).each( function() {
+            let $form = $( this );
+            wpcf7.initForm( $form );
+            if ( wpcf7.cached ) {
+                wpcf7.refill( $form );
+            }
+
+        });
+
+    };
+
 }
 
-$(document).ready(async () => {
+$(document).ready(function ($) {
 
     //  Header variables
     let headerNavSelector = '.header .header-navigation';
     let headerBurgerBtnSelector = '.header .header-burger-btn';
     let headerLink = ".header .nav__item";
+    let headerContactLink = '.header .contact__btn';
 
     //  Create cinema class
     let cinema = new Cinema(headerNavSelector);
@@ -134,7 +177,7 @@ $(document).ready(async () => {
     cinema.getFilms('.films .swiper-container', filmsUrl);
 
     //  Header burger btn click event
-    $(document).on('click', headerBurgerBtnSelector, function () {
+    $(document).on('click', headerBurgerBtnSelector || headerLink, function () {
         if (!$(headerNavSelector).hasClass('active')) {
             cinema.showBurgerMenu();
         } else {
@@ -146,13 +189,20 @@ $(document).ready(async () => {
 
     $(document).on('click', headerLink, function (e) {
         e.preventDefault();
-
+        cinema.hideBurgerMenu();
         let elementClick = $(this).attr("href");
         let destination = $(elementClick).offset().top;
 
         $('html:not(:animated), body:not(:animated)').animate({
             scrollTop: destination
         }, 800);
+
+        return false;
+    });
+
+    $(document).on('click', headerContactLink, function (e) {
+        e.preventDefault();
+        cinema.openContactPopup();
 
         return false;
     });

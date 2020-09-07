@@ -26,7 +26,6 @@ if ($posts->have_posts()) :
 
             <div class="title-box">
                 <div class="left-side">
-                    <img src="images/src/video.svg" alt="" class="title-image">
                     <h2 class="left-label">
                         Latest News
                     </h2>
@@ -43,7 +42,7 @@ if ($posts->have_posts()) :
                                     <?php echo get_the_title(); ?>
                                 </div>
                                 <div class="content-description">
-                                    <?php echo get_the_content(); ?>
+                                    <?php echo esc_html( kama_excerpt([ 'text'=>$str, 'maxchar'=>90 ]) );; ?>
                                 </div>
                             </div>
 

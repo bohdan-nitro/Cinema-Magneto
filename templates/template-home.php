@@ -20,6 +20,7 @@ wp_head();
     get_template_part('./template-parts/home/section', 'films');
     get_template_part('./template-parts/home/section', 'news');
     get_template_part('./template-parts/home/section', 'reviews');
+    get_template_part('./template-parts/popups/contact');
     get_footer();
 ?>
 

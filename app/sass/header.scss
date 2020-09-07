@@ -1,5 +1,13 @@
 @import "variables";
+input {
+    width: 100%;
+    background-color: $blue;
+    padding: 10px 10px;
+    border-radius: 10px;
+    color: $white;
+    font-size: 1rem;
 
+}
 .header {
     position: absolute;
     display: flex;
@@ -99,6 +107,52 @@
 
 }
 
+.white-popup {
+    position: relative;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 40px;
+    .wpcf7-form-submit {
+        font-size: 1rem;
+        text-transform: uppercase;
+        background-color: $yellow;
+    }
+
+
+    .popupContent {
+        background-color: $white;
+        padding: 10px;
+    }
+    label {
+        font-family: $font-family-title;
+        font-size: 1rem;
+        color: $black;
+    }
+
+    textarea {
+        width: 100%;
+        background-color: $blue;
+        color: $white;
+    }
+    .wpcf7-form {
+        .wpcf7-form-submit {
+            align-items: center;
+            width: 100%;
+            background-color: $blue;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin: 0 auto;
+            text-align: center;
+            color: $white;
+            text-transform: uppercase;
+            font-size: 1rem;
+            transition: background-color 0.2s ease-in-out;
+        }
+    }
+
+
+}
+
 @media screen and (max-width: 1024px) {
     .header {
         position: fixed;
@@ -150,56 +204,48 @@
 
         .header-navigation {
             display: none;
-            max-height: 0;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: $black;
+            z-index: 10;
+            width: 100vw;
             transition: all 0.4s ease;
-            min-width: 100%;
 
-            &.active {
-                position: fixed;
-                display: block;
+            .navigation-container {
+                padding-top: 40px;
+                flex-flow: column nowrap;
+                justify-content: flex-start;
+                transition: all 0.4s ease;
                 height: 100%;
-                max-height: 100%;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: $black;
-                z-index: 10;
-                width: 100vw;
 
-                .navigation-container {
+                .nav__menu {
                     padding-top: 40px;
                     flex-flow: column nowrap;
-                    justify-content: flex-start;
-                    transition: all 0.4s ease;
+                    justify-content: space-around;
                     height: 100%;
 
-                    .nav__menu {
-                        padding-top: 40px;
-                        flex-flow: column nowrap;
-                        justify-content: flex-start;
-                        height: 100%;
-
-                        .nav__item {
-                            transition: all 0.4s ease;
-                            display: block;
-                            color: $yellow;
-                            font-size: 1rem;
-                            font-weight: bold;
-                            padding: 0;
-                            height: 100%;
-                            cursor: pointer;
-
-                        }
-                    }
-
-                    .intro-navigation {
-                        width: 100%;
-                        height: 64px;
-                        padding: 0 40px;
+                    .nav__item {
+                        transition: all 0.4s ease;
+                        display: block;
+                        color: $yellow;
+                        font-size: 1rem;
+                        font-weight: bold;
+                        padding: 0;
+                        cursor: pointer;
 
                     }
+                }
+
+                .intro-navigation {
+                    width: 100%;
+                    height: 64px;
+                    padding: 0 40px;
 
                 }
+
             }
 
         }

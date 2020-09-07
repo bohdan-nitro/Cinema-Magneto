@@ -22,6 +22,7 @@
         </div>
         <div class="header__btn">
             <a href="#" class="contact__btn">Try Now</a>
+
         </div>
     </div>
 </header>
