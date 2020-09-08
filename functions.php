@@ -63,7 +63,7 @@ if (!function_exists('cinema_magnetto_scripts_setup')) :
         wp_enqueue_script('cinema-magnetto-jquery-ui', get_theme_file_uri('/app/js/libs/jquery-ui.min.js'), array('jquery'), '1.0', true);
         wp_enqueue_script('cinema-magnetto-mfp', get_theme_file_uri('/app/js/libs/jquery.magnific-popup.js'), array('jquery'), '1.0', true);
 
-        wp_enqueue_script('cinema-magnetto-main', get_theme_file_uri('/app/js/app.js'), array('jquery'), $release_version, true);
+        wp_enqueue_script('cinema-magnetto-main', get_theme_file_uri('/app/js/app.min.js'), array('jquery'), $release_version, true);
     }
 
 endif;

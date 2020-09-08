@@ -1,24 +1,20 @@
 let preprocessor = 'sass';
 
-const { src, dest, parallel, series, watch } = require("gulp");
+const { src, dest, parallel, series, watch, } = require("gulp");
 
+const gulp = require('gulp');
+const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 const browserSync = require("browser-sync").create();
-
 const concat = require("gulp-concat");
-
 const uglify = require("gulp-uglify-es").default;
-
 const sass = require("gulp-sass");
-
 const autoprefixer = require("gulp-autoprefixer");
-
 const cleancss = require("gulp-clean-css");
-
 const imagemin = require("gulp-imagemin");
-
 const newer = require("gulp-newer");
-
 const del = require("del");
+
 
 function browsersync() {
     browserSync.init({
@@ -31,7 +27,8 @@ function browsersync() {
 function scripts() {
     return src([
         "node_modules/jquery/dist/jquery.min.js",
-        "app/js/app.js",
+        "app/js/libs/jquery.magnific-popup.js",
+        "app/js/app.js"
     ])
         .pipe(concat("app.min.js"))
         .pipe(uglify())
@@ -72,12 +69,40 @@ function buildCopy() {
         .pipe(dest("dist"))
 }
 
+
 function startwatch() {
     watch("app/sass/**/*.scss", styles);
     watch(["app/**/*.js", '!app/**/*.min.js'], scripts);
     watch("app/**/*.html").on("change", browserSync.reload);
     watch("app/images/src/**/*", images);
 }
+
+gulp.task('default', () => {
+        return src('app/js/*.js')
+            .pipe(sourcemaps.init())
+            .pipe(babel({
+                "presets": [
+                    [
+                        "@babel/preset-env",
+                        {
+                            "targets": {
+                                "esmodules": true
+                            }
+                        }
+                    ]
+                ],
+                "plugins": [
+                    [
+                        "@babel/plugin-proposal-class-properties"
+                    ]
+                ]
+            }))
+            .pipe(concat('all.js'))
+            .pipe(sourcemaps.write('.'))
+            .pipe(gulp.dest('dist'))
+}
+
+);
 
 exports.browsersync = browsersync;
 exports.styles = styles;

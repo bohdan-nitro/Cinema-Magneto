@@ -110,7 +110,13 @@ input {
     align-items: center;
     display: flex; }
 .header .header-navigation .navigation-container {
-    width: 100%; }
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    max-width: 500px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; }
 .header__logo {
     display: flex;
     width: 100%;
@@ -124,11 +130,7 @@ input {
 .header .nav__menu {
     width: 100%;
     display: flex;
-    margin: 0 auto;
-    max-width: 500px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center; }
+    justify-content: space-between; }
 .header .nav__menu .nav__item {
     position: relative;
     transition: border-bottom-color 0.2s ease-in-out;
@@ -254,7 +256,8 @@ input {
         font-size: 1rem;
         font-weight: bold;
         padding: 0;
-        cursor: pointer; }
+        cursor: pointer;
+        margin: 0 auto; }
     .header .header-navigation .navigation-container .intro-navigation {
         width: 100%;
         height: 64px;

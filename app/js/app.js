@@ -177,7 +177,7 @@ $(document).ready(function ($) {
     cinema.getFilms('.films .swiper-container', filmsUrl);
 
     //  Header burger btn click event
-    $(document).on('click', headerBurgerBtnSelector || headerLink, function () {
+    $(document).on('click', headerBurgerBtnSelector, function () {
         if (!$(headerNavSelector).hasClass('active')) {
             cinema.showBurgerMenu();
         } else {
@@ -189,7 +189,9 @@ $(document).ready(function ($) {
 
     $(document).on('click', headerLink, function (e) {
         e.preventDefault();
-        cinema.hideBurgerMenu();
+        if ($(window).width() < 1024) {
+            cinema.hideBurgerMenu();
+        }
         let elementClick = $(this).attr("href");
         let destination = $(elementClick).offset().top;
 
